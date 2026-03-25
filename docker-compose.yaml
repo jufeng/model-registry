@@ -25,6 +25,10 @@ services:
     container_name: model-registry-ui
     ports:
       - "9000:9000"
+    volumes:
+      - ${KUBECONFIG:-~/.kube/config}:/root/.kube/config:ro
+    environment:
+      - KUBECONFIG=/root/.kube/config
     depends_on:
       - model-registry
       - model-catalog
